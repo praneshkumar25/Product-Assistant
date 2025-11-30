@@ -60,7 +60,7 @@ POST http://localhost:5000/api/chat
 
 ---
 
-### ### **Example 1 — Ask a product question (Q&A Intent)**
+### **Example 1 — Ask a product question (Q&A Intent)**
 
 **Request**
 
@@ -79,7 +79,7 @@ POST http://localhost:5000/api/chat
 
 ---
 
-### ### **Example 2 — Follow-up question (Stateful Conversation)**
+### **Example 2 — Follow-up question (Stateful Conversation)**
 
 **Request**
 
@@ -98,7 +98,7 @@ POST http://localhost:5000/api/chat
 
 ---
 
-### ### **Example 3 — Provide feedback (Feedback Intent)**
+### **Example 3 — Provide feedback (Feedback Intent)**
 
 **Request**
 
@@ -121,7 +121,7 @@ This application follows a **Service → Plugin → Orchestrator** pattern
 
 ### **Core Components**
 
-### ### **`app.py` — API Gateway**
+### **`app.py` — API Gateway**
 
 * Flask entry point.
 * Handles incoming requests (`/api/chat`).
@@ -130,7 +130,7 @@ This application follows a **Service → Plugin → Orchestrator** pattern
 
 ---
 
-### ### **`orchestrator.py` — The Brain**
+### **`orchestrator.py` **
 
 * Creates and manages the **Semantic Kernel** instance.
 * Handles **Intent Routing**:
@@ -141,7 +141,7 @@ This application follows a **Service → Plugin → Orchestrator** pattern
 
 ---
 
-### ### **`config.py` — Centralized Config**
+### **`config.py` — Config**
 
 * Loads environment variables via `.env`.
 * Stores Azure/OpenAI/Redis configuration.
@@ -151,7 +151,7 @@ This application follows a **Service → Plugin → Orchestrator** pattern
 
 ## 🔌 **Plugins (The Agents)**
 
-### ### **`plugins/datasheet_plugin.py` — Q&A Agent**
+### **`plugins/datasheet_plugin.py` — Q&A Agent**
 
 * Retrieves product attributes (e.g., *width*, *bore diameter*, *limiting speed*) from JSON datasheets.
 * Implements **Redis caching**:
@@ -161,21 +161,21 @@ This application follows a **Service → Plugin → Orchestrator** pattern
 
 ---
 
-### ### **`plugins/feedback_plugin.py` — Feedback Agent**
+### **`plugins/feedback_plugin.py` — Feedback Agent**
 
 * Stores user corrections or feedback.
 * Saves feedback records (designation → attribute → note → timestamp).
 
 ---
 
-## 🛠️ **Services (Infrastructure Layer)**
+## 🛠️ Services 
 
-### ### **`services/data_manager.py`**
+### **`services/data_manager.py`**
 
 * Loads all JSON files inside `/data` automatically.
 ---
 
-### ### **`services/redis_service.py`**
+### **`services/redis_service.py`**
 
 * Wrapper around Redis
   * If real Redis connection fails → switches to **in-memory mock** so the app works.
